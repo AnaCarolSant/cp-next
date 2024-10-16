@@ -1,0 +1,29 @@
+.menu-nav {
+    display: flex;
+    align-items: flex-end;
+}
+
+.menu-ul {
+    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.menu-li {
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+
+
+}
+
+.menu-a {
+    font-size: 0.8rem;
+    color: #1f1e31;
+  }
+
+
+  

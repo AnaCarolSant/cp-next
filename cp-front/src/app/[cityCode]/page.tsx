@@ -1,23 +1,20 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Header } from "../components/Header/Header";
-import { Layout } from "../components/Layout/Layout";
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "next/navigation";
+import { Layout } from "../../components/Layout/Layout";
+import UserContext from "../../context/UserContext";
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString) => {
   const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, '0');
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
-
   return `${day}/${month}/${year}`;
 };
 
-export default function Home() {
-  const searchParams = useSearchParams();
-  const cityCode = searchParams.get("cityCode");
-
+export default function HomeParams() {
+  const { cityCode } = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [cityData, setCityData] = useState<any>(null);
   const [forecast, setForecast] = useState<any[]>([]);
@@ -55,13 +52,13 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const cityCodeParams = cityCode ? Number(cityCode) : 244; // Código padrão
+    const cityCodeParams = cityCode ? Number(cityCode) : 244; // 244 é o código padrão
     loadCity(cityCodeParams);
   }, [cityCode]);
 
   return (
     <Layout>
-      <Header title="Inicio" />
+      <h1>Informações da Cidade</h1>
       <div>
         {isLoading ? (
           <p>Carregando...</p>
@@ -69,30 +66,22 @@ export default function Home() {
           <div>
             {cityData ? (
               <>
-                <div>
-                  <h2>
-                    {cityData?.cidade}/{cityData?.estado}
-                  </h2>
-                  <p>
-                    Min<span>{cityData?.clima[0].min}</span>/ Max
-                    <span>{cityData?.clima[0].max}</span> -
-                    <span> {cityData?.clima[0].condicao_desc}</span>
-                  </p>
-                </div>
+                <h2>
+                  {cityData.cidade}/{cityData.estado}
+                </h2>
+                <p>
+                  Min <span>{cityData.clima[0]?.min ?? "Dados não disponíveis"}</span> /
+                  Max <span>{cityData.clima[0]?.max ?? "Dados não disponíveis"}</span>
+                </p>
+                <p>{cityData.clima[0]?.condicao_desc ?? "Descrição não disponível"}</p>
                 <ul>
                   {forecast.length > 0 ? (
-                    forecast.map((day) => {
-                      const formattedDate = formatDate(day.data);
-                      const minTemp = day.min !== null ? day.min : "Dados não disponíveis";
-                      const maxTemp = day.max !== null ? day.max : "Dados não disponíveis";
-                      const condition = day.condicao_desc || "Condição não disponível";
-
-                      return (
-                        <li key={day.data}>
-                          {formattedDate}: Min <span>{minTemp}</span>, Max <span>{maxTemp}</span> - {condition}
-                        </li>
-                      );
-                    })
+                    forecast.map((day) => (
+                      <li key={day.data}>
+                        {formatDate(day.data)}: Min <span>{day.min ?? "Dados não disponíveis"}</span>, Max{" "}
+                        <span>{day.max ?? "Dados não disponíveis"}</span> - {day.condicao_desc ?? "Condicao não disponível"}
+                      </li>
+                    ))
                   ) : (
                     <li>Nenhuma previsão disponível.</li>
                   )}
