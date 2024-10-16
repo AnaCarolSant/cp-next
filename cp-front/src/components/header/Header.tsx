@@ -31,17 +31,17 @@ export const Header = ({ title, userName }: HeaderProps) => {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.header - h1}>{title}</h1>
-      <div className={styles.header - div}>
+      <h1 className={styles.header_h1}>{title}</h1>
+      <div className={styles.header_div}>
         {userName ? (
-          <div className={styles.header - div}>
+          <div className={styles.header_div}>
             <span>{userName}</span>
-            <button className={styles.header - button} onClick={handleLogout}>
+            <button className={styles.header_button} onClick={handleLogout}>
               Sair
             </button>
           </div>
         ) : (
-          <button className={styles.header - button} onClick={handleLogin}>
+          <button className={styles.header_button} onClick={handleLogin}>
             Login
           </button>
         )}

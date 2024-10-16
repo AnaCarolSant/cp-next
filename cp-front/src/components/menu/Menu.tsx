@@ -1,38 +1,33 @@
-import { BiHome, BiUserCircle, BiSearch, BiHeart } from "react-icons/bi";
-import {
-    styledMenu,
-    wrapperMenu,
-    menuItem,
-    linkStyle,
-} from './Menu.style'; // Importe os estilos
+import { BiHeart, BiHome, BiSearch, BiUserCircle } from "react-icons/bi";
+import styles from './Menu.module.css';
 
 import Link from "next/link";
 
 export const Menu = () => {
     return (
-        <nav style={styledMenu}>
-            <ul style={wrapperMenu}>
-                <li style={menuItem}>
+        <nav className={styles.menu_nav}>
+            <ul className={styles.menu_ul}>
+                <li className={styles.menu_li}>
                     <BiHome size="1.5rem" color="#38aede" />
-                    <Link href="/" style={linkStyle}>
+                    <Link href="/" >
                         Home
                     </Link>
                 </li>
-                <li style={menuItem}>
+                <li className={styles.menu_li}>
                     <BiSearch size="1.5rem" color="#38aede" />
-                    <Link href="/search" style={linkStyle}>
+                    <Link href="/search" >
                         Busca
                     </Link>
                 </li>
-                <li style={menuItem}>
+                <li className={styles.menu_li}>
                     <BiHeart size="1.5rem" color="#38aede" />
-                    <Link href="/favorites" style={linkStyle}>
+                    <Link href="/favorites" >
                         Favoritos
                     </Link>
                 </li>
-                <li style={menuItem}>
+                <li className={styles.menu_li}>
                     <BiUserCircle size="1.5rem" color="#38aede" />
-                    <Link href="/profile" style={linkStyle}>
+                    <Link href="/profile" >
                         Perfil
                     </Link>
                 </li>

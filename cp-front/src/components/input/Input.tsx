@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './Input.module.css';
 
 interface InputProps {
   type: string;
@@ -19,13 +19,13 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <>
-      <label htmlFor={id} style={labelStyle}>{label}</label>
+      <label htmlFor={id} className={styles.input_label}>{label}</label>
       <input
         type={type}
         id={id}
         name={name}
         onChange={onChange}
-        style={inputStyle}
+        className={styles.input}
         {...rest}
       />
     </>

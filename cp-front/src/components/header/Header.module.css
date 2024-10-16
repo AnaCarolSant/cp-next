@@ -4,16 +4,16 @@
   align-items: center;
 }
 
-.header-h1 {
+.header_h1 {
   margin-bottom: 0;
 }
 
-.header-div {
+.header_div {
   display: flex;
   gap: 8px;
 }
 
-.header-button {
+.header_button {
   border: 0;
   padding: 4px 6px;
   font-size: 12px;

@@ -1,9 +1,9 @@
-.menu-nav {
+.menu_nav {
     display: flex;
     align-items: flex-end;
 }
 
-.menu-ul {
+.menu_ul {
     width: 100%;
   display: flex;
   justify-content: space-between;
@@ -11,7 +11,7 @@
   margin: 0;
 }
 
-.menu-li {
+.menu_li {
     display: flex;
   align-items: center;
   flex-direction: column;
@@ -20,7 +20,7 @@
 
 }
 
-.menu-a {
+.menu_a {
     font-size: 0.8rem;
     color: #1f1e31;
   }
