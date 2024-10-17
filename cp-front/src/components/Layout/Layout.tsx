@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
     return (
-        <div className={styles.layout}>
+        <div className={styles.layout_div}>
             <main>{children}</main>
             <Menu />
         </div>
